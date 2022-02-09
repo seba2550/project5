@@ -26,8 +26,9 @@ class Silhouette:
             np.ndarray
                 a 1D array with the silhouette scores for each of the observations in `X`
 
-        Silhouette score is calculated as follows: For a single point i, take the distance between i and its next nearest centroid (inter-cluster distance) and subtract the average distance
-        between i and all of the other points in its own cluster (intra-cluster distance). Divide this by the max value of the two previous options. Score goes from -1 to 1. 
+        Silhouette score is calculated as follows: For a single point i, take the smallest mean distance between i and all other points in any other cluster
+        (inter-cluster distance) and subtract the mean distance between point i and all of the other points in its own cluster (intra-cluster distance). 
+        Divide this by the max value of the two previous options. Score goes from -1 to 1. 
         """
         # Create two arrays: one will hold the scores and the other has euclidean distances for the X matrix
         scores = np.zeros(X.shape[0])
