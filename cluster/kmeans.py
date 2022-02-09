@@ -19,6 +19,8 @@ class KMeans:
             max_iter: int
                 the maximum number of iterations before quitting model fit
         """
+        if k <= 0:
+            raise ValueError("K must be greater than 0!")
         # Pass the input variables as attributes of the KMeans class
         self.k = k
         self.max_iter = max_iter
@@ -29,6 +31,7 @@ class KMeans:
         # Build empty lists for holding the clusters and centroids
         self.clusters = [[] for _ in range(self.k) ] # Holds indices
         self.centroids = [] # Holds samples
+
 
 
     def fit(self, mat: np.ndarray):
@@ -43,6 +46,7 @@ class KMeans:
         self.mat = mat
         self.n_observations, self.n_features = mat.shape
 
+        
         # Initialize random centroids and create an object to hold previous centroids as we update them through the fitting process
         centroids = np.random.rand(self.k, self.n_features)
         prev_centroids = centroids.copy()
