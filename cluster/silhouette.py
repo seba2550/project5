@@ -43,7 +43,7 @@ class Silhouette:
 
         return self.scores
 
-    def calculate_a(self, distances, labels, index):
+    def calculate_intraclust_dist(self, distances, labels, index):
 
         # Calculate the intra-cluster distance for each data point
         distances = distances[index,labels == labels[index]]
@@ -51,10 +51,10 @@ class Silhouette:
         
         return a
 
-    def calculate_b(self, distances, labels, index):
+    def calculate_interclust_dist(self, distances, labels, index):
     
         # Calculate the inter cluster distance for a data point
-        inter_distances = np.ones(np.max(labels)) * np.inf
+        inter_distances = np.ones(np.max(labels)) * np.inf # Initialize a matrix for holding the inter cluster distances
         for j in range(np.max(labels)):  # We're iterating over the assigned labels here
             if j != labels[index]:
                 inter_distances[j] = np.sum(distances[index,labels == j])/np.sum(labels == j)
