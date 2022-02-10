@@ -1,3 +1,5 @@
+![BuildStatus](https://github.com/seba2550/project5/actions/workflows/pytest.yml/badge.svg)
+
 # Project 5
 Implementation of KMeans and Silhouette Scoring
 
